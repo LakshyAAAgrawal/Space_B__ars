@@ -40,7 +40,7 @@ Immediate requirement-
 * Suggestions for new Commands.
 
 Original Concept:-
-Lakshya A Agrawal
-Shrikant Garg
-Rahul Kukreja
-Nitish Gupta
+* Lakshya A Agrawal
+* Shrikant Garg
+* Rahul Kukreja
+* Nitish Gupta
