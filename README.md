@@ -12,19 +12,19 @@ The player will not be knowing which all commands exist in the game, but rather 
 # Installation instructions
 The game is written in python3 and therefore requires python3 to be installed along with the pygame library. It also uses the pickle library - which is inbuilt.
 To install the pygame library using pip, execute
-'''
+```
   pip3 install pygame
-'''
+```
 to run, execute -
-'''
+```
   python3 game.py
-'''
+```
 
 Windows users can just execute -
-'''  
+```  
   pip install pygame
   python game.py
-'''
+```
 # Contribute
 The project highly encourages any contributions, in any form - graphics, sounds, game commands, or code contributions. All suggestions, bug reports and idea contributions are welcome in the discussions.
 
