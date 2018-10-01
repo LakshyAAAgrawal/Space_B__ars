@@ -28,15 +28,15 @@ Windows users can just execute -
 # Contribute
 The project highly encourages any contributions, in any form - graphics, sounds, game commands, or code contributions. All suggestions, bug reports and idea contributions are welcome in the discussions.
 Immediate requirement-
-* 1. Sounds
-  * 1 Background Music
-  * 1 In-game sounds
-* 2. Game Logo
-* 3. Code maintenance and cleaning
-* 4. Implementation of commands
-  * 1 Protect/Shield - After the player uses this command, encountering a Spacebar will not kill, during the time the command is active.
-  * 2 Wildcard - The player is given a choice to select any one of the characters from the keyboard which they wish to capture.
-* 5. Suggestions for new Commands.
+* 1 Sounds
+  * 1. Background Music
+  * 2. In-game sounds
+* 2 Game Logo
+* 3 Code maintenance and cleaning
+* 4 Implementation of commands
+  * 1. Protect/Shield - After the player uses this command, encountering a Spacebar will not kill, during the time the command is active.
+  * 2. Wildcard - The player is given a choice to select any one of the characters from the keyboard which they wish to capture.
+* 5 Suggestions for new Commands.
 
 Original Concept:-
 Lakshya A Agrawal
