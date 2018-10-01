@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#Space_bar
+#Space_B__ars
 #IGS Team Name GH-76
 #Made by Lakshya A Agrawal, Shrikant Garg, Rahul Kukreja, Nitish Gupta
 import input_keyb as pygame_textinput
@@ -55,12 +55,6 @@ class char_text:
         self.textrect=None
         self.r=None
         self.text=None
-
-
-
-
-def display_keyboard(chars_avail, screen, x, y):
-    cons_keyb.cons_keyb(screen, chars_avail)
 
 def update_marquee(cap_char, screen):
     i=0
@@ -187,7 +181,8 @@ def game():
 
     # Blit its surface onto the screen
     screen.blit(textinput.get_surface(), (screen_max_x//6, (screen_max_y//2)//2.7))
-    display_keyboard(captured_char, screen, (screen_max_x-(screen_max_x//keyb_scaling_x))//2, screen_max_y//2 + (((screen_max_y//2)-(screen_max_y//keyb_scaling_y))//2))
+    #display_keyboard(captured_char, screen, (screen_max_x-(screen_max_x//keyb_scaling_x))//2, screen_max_y//2 + (((screen_max_y//2)-(screen_max_y//keyb_scaling_y))//2))
+    cons_keyb.cons_keyb(screen, captured_char)
     
     
     if not split_mode_on:
