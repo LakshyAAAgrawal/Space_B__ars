@@ -31,12 +31,6 @@ slow_start=0
 str_to_disp=''
 game_start=True
 
-keyb_img = pygame.image.load('assets/keyboard_img.png')
-keyb_img = pygame.transform.scale(keyb_img, (int((screen_max_x)//keyb_scaling_x), int((screen_max_y)//keyb_scaling_y)))
-
-pygame.mixer.music.load("assets/aa.mp3")
-pygame.mixer.music.play(0)
-
 displayfont = pygame.font.SysFont(None, (screen_max_y)//20)
 
 class char_text:
@@ -65,16 +59,7 @@ class char_text:
 
 
 
-def display_captured_char(cap, coord):
-    basicfont = pygame.font.SysFont(None, (screen_max_y)//15)
-    text = basicfont.render(' '.join(cap), True, (0, 255, 0), (0,0,0))
-    textrect = text.get_rect()
-    textrect.centerx = screen.get_rect().centerx
-    textrect.centery = screen_max_y//2-screen_max_y//70
-    screen.blit(text, textrect)
-
-def display_keyboard(chars_avail, keyb_img, screen, x, y):
-    #screen.blit(keyb_img, (x,y))
+def display_keyboard(chars_avail, screen, x, y):
     cons_keyb.cons_keyb(screen, chars_avail)
 
 def update_marquee(cap_char, screen):
@@ -202,7 +187,7 @@ def game():
 
     # Blit its surface onto the screen
     screen.blit(textinput.get_surface(), (screen_max_x//6, (screen_max_y//2)//2.7))
-    display_keyboard(captured_char, keyb_img, screen, (screen_max_x-(screen_max_x//keyb_scaling_x))//2, screen_max_y//2 + (((screen_max_y//2)-(screen_max_y//keyb_scaling_y))//2))
+    display_keyboard(captured_char, screen, (screen_max_x-(screen_max_x//keyb_scaling_x))//2, screen_max_y//2 + (((screen_max_y//2)-(screen_max_y//keyb_scaling_y))//2))
     
     
     if not split_mode_on:
