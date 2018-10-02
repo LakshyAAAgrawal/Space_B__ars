@@ -157,7 +157,6 @@ def game():
 
     # Blit its surface onto the screen
     screen.blit(textinput.get_surface(), (variables.screen_max_x//6, (variables.screen_max_y//2)//2.7))
-    #display_keyboard(captured_char, screen, (screen_max_x-(screen_max_x//keyb_scaling_x))//2, screen_max_y//2 + (((screen_max_y//2)-(screen_max_y//keyb_scaling_y))//2))
     cons_keyb.cons_keyb(screen, captured_char)
     
     
@@ -166,7 +165,7 @@ def game():
     else:
         screen.blit(selector, (variables.screen_max_x//4-30,variables.screen_max_y//4+variables.screen_max_y//11.5))
         screen.blit(selector, (3*variables.screen_max_x//4 -30,variables.screen_max_y//4+variables.screen_max_y//11.5))
-    speed=90 if speed+0.05>80 else speed + 0.05
+    speed=80 if speed+0.05>80 else speed + 0.05
     update_marquee(captured_char, screen)
     pygame.display.update()
     clock.tick(speed)
