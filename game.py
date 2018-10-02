@@ -7,11 +7,11 @@ import pygame
 from give_char import givechar as gc
 import pickle
 import cons_keyb
+import char_text
+import variables
 pygame.init()
 
 #variable definitions
-screen_max_x=1024
-screen_max_y=760
 screen_bgcolor=(0,0,0)
 keyb_scaling_y=2.4
 keyb_scaling_x=1.1
@@ -21,7 +21,6 @@ save_state=False
 save_counter=0
 
 speed=50
-dirn=True
 dirn_change=False
 dirn_change_counter=0
 split_mode_on=False
@@ -31,36 +30,13 @@ slow_start=0
 str_to_disp=''
 game_start=True
 
-displayfont = pygame.font.SysFont(None, (screen_max_y)//20)
-
-class char_text:
-    r=None
-    textrect=None
-    text=None
-    def __init__(self, rep):
-        self.r = '_' if rep==' ' else rep
-        basicfont = pygame.font.SysFont(None, (screen_max_y)//10)
-        self.text = basicfont.render(self.r, True, (0, 255, 250))
-        self.textrect = self.text.get_rect()
-        self.textrect.centerx = -50 if dirn else (screen_max_x+50)
-        self.textrect.centery = screen_max_y//4 + screen_max_y//8
-    
-    def update_screen(self, screen):
-        screen.blit(self.text, self.textrect)
-        
-    def update_pos(self):
-        self.textrect.centerx=self.textrect.centerx+7 if dirn else (self.textrect.centerx-7)
-
-    def __del__(self):
-        self.textrect=None
-        self.r=None
-        self.text=None
+displayfont = pygame.font.SysFont(None, (variables.screen_max_y)//20)
 
 def update_marquee(cap_char, screen):
     i=0
-    if dirn:
+    if variables.dirn:
         while i<len(list_of_chars):
-            if list_of_chars[i].textrect.centerx>screen_max_x+50:
+            if list_of_chars[i].textrect.centerx>variables.screen_max_x+50:
                 list_of_chars.pop(i)
                 i=i-1
             else:
@@ -69,7 +45,7 @@ def update_marquee(cap_char, screen):
             i=i+1
         if list_of_chars[-1].textrect.centerx>50:
             if not dirn_change:
-                list_of_chars.append(char_text(gc(cap_char)))
+                list_of_chars.append(char_text.char_text(gc(cap_char)))
     else:
         while i<len(list_of_chars):
             if list_of_chars[i].textrect.centerx<-50:
@@ -79,18 +55,18 @@ def update_marquee(cap_char, screen):
                 list_of_chars[i].update_pos()
                 list_of_chars[i].update_screen(screen)
             i=i+1
-        if list_of_chars[-1].textrect.centerx<screen_max_x-50:
+        if list_of_chars[-1].textrect.centerx<variables.screen_max_x-50:
             if not dirn_change:
-                list_of_chars.append(char_text(gc(cap_char)))
+                list_of_chars.append(char_text.char_text(gc(cap_char)))
                 
 def game():
-    global slow_count, slow_flag, dirn, dirn_change_counter, dirn_change, speed, gameplay, split_mode_on, split_mode_counter, save_counter, save_state, slow_start, slow_used, str_to_disp
+    global slow_count, slow_flag,dirn_change_counter, dirn_change, speed, gameplay, split_mode_on, split_mode_counter, save_counter, save_state, slow_start, slow_used, str_to_disp
     screen.fill(screen_bgcolor)
     events = pygame.event.get()
     displayText = displayfont.render(str_to_disp, True, (0, 255, 0), (0,0,0))
     displaytextrect = displayText.get_rect()
-    displaytextrect.centerx = screen_max_x//2
-    displaytextrect.centery = screen_max_y//10
+    displaytextrect.centerx = variables.screen_max_x//2
+    displaytextrect.centery = variables.screen_max_y//10
     screen.blit(displayText, displaytextrect)
     if "_" in captured_char:
         gameplay=not gameplay
@@ -105,7 +81,7 @@ def game():
         if event.type == pygame.QUIT:
             exit()
     # Feed it with events every frame
-    ret_status=textinput.update(events, captured_char, list_of_chars, screen_max_x, screen_max_y, split_mode_on)
+    ret_status=textinput.update(events, captured_char, list_of_chars, variables.screen_max_x, variables.screen_max_y, split_mode_on)
     if ret_status==True:
         if textinput.get_text() == "slow":
             if not slow_used:
@@ -123,7 +99,7 @@ def game():
                 str_to_disp="Can't slow right now"
         elif (textinput.get_text() == "><") or (textinput.get_text() == "reverse"):
             dirn_change=True
-            dirn=not dirn
+            variables.dirn=not variables.dirn
         elif textinput.get_text() == "save":
             if not save_state:
                 with open('savefile_char', 'wb') as fp:
@@ -180,16 +156,16 @@ def game():
         dirn_change_counter=dirn_change_counter+1
 
     # Blit its surface onto the screen
-    screen.blit(textinput.get_surface(), (screen_max_x//6, (screen_max_y//2)//2.7))
+    screen.blit(textinput.get_surface(), (variables.screen_max_x//6, (variables.screen_max_y//2)//2.7))
     #display_keyboard(captured_char, screen, (screen_max_x-(screen_max_x//keyb_scaling_x))//2, screen_max_y//2 + (((screen_max_y//2)-(screen_max_y//keyb_scaling_y))//2))
     cons_keyb.cons_keyb(screen, captured_char)
     
     
     if not split_mode_on:
-        screen.blit(selector, (screen_max_x//2-30,screen_max_y//4+screen_max_y//11.5))
+        screen.blit(selector, (variables.screen_max_x//2-30,variables.screen_max_y//4+variables.screen_max_y//11.5))
     else:
-        screen.blit(selector, (screen_max_x//4-30,screen_max_y//4+screen_max_y//11.5))
-        screen.blit(selector, (3*screen_max_x//4 -30,screen_max_y//4+screen_max_y//11.5))
+        screen.blit(selector, (variables.screen_max_x//4-30,variables.screen_max_y//4+variables.screen_max_y//11.5))
+        screen.blit(selector, (3*variables.screen_max_x//4 -30,variables.screen_max_y//4+variables.screen_max_y//11.5))
     speed=90 if speed+0.05>80 else speed + 0.05
     update_marquee(captured_char, screen)
     pygame.display.update()
@@ -227,45 +203,45 @@ def show_menu():
                         split_mode_on=False
                     captured_char=['s','a','v','e','l','o','w','>','<']
                 gameplay=not gameplay
-                list_of_chars=[char_text(gc(captured_char))]
+                list_of_chars=[char_text.char_text(gc(captured_char))]
                 return()
-    titlebasicfont = pygame.font.SysFont(None, (screen_max_y)//5)
+    titlebasicfont = pygame.font.SysFont(None, (variables.screen_max_y)//5)
     titleText = titlebasicfont.render('Space _ B___ars', True, (0,255,250))
     titleTextrect = titleText.get_rect()
-    titleTextrect.centerx = screen_max_x//2
-    titleTextrect.centery = screen_max_y//4
+    titleTextrect.centerx = variables.screen_max_x//2
+    titleTextrect.centery = variables.screen_max_y//4
     screen.blit(titleText, titleTextrect)
-    menubasicfont = pygame.font.SysFont(None, (screen_max_y)//10)
+    menubasicfont = pygame.font.SysFont(None, (variables.screen_max_y)//10)
     menuText1 = menubasicfont.render('New Game', True, (101, 115, 126))
     menuText1rect = menuText1.get_rect()
-    menuText1rect.centerx = screen_max_x//2
-    menuText1rect.centery = screen_max_y//2 + screen_max_y//5
+    menuText1rect.centerx = variables.screen_max_x//2
+    menuText1rect.centery = variables.screen_max_y//2 + variables.screen_max_y//5
     screen.blit(menuText1,menuText1rect)
     menuText2 = menubasicfont.render('Load Game', True, (101, 115, 126))
     menuText2rect = menuText2.get_rect()
-    menuText2rect.centerx = screen_max_x//2
-    menuText2rect.centery = screen_max_y//2 + (3*screen_max_y)//10
+    menuText2rect.centerx = variables.screen_max_x//2
+    menuText2rect.centery = variables.screen_max_y//2 + (3*variables.screen_max_y)//10
     screen.blit(menuText2,menuText2rect)
     
-    selector_menu = pygame.Surface((screen_max_x//2, screen_max_y//10), pygame.SRCALPHA)   # per-pixel alpha
+    selector_menu = pygame.Surface((variables.screen_max_x//2, variables.screen_max_y//10), pygame.SRCALPHA)   # per-pixel alpha
     selector_menu.fill((255,255,255,50))                         # notice the alpha value in the color
     if new_game:
-        screen.blit(selector_menu, (screen_max_x//4,screen_max_y//2 + screen_max_y//7))
+        screen.blit(selector_menu, (variables.screen_max_x//4,variables.screen_max_y//2 + variables.screen_max_y//7))
     else:
-        screen.blit(selector_menu, (screen_max_x//4,screen_max_y//2 + (2*screen_max_y)//8))
+        screen.blit(selector_menu, (variables.screen_max_x//4,variables.screen_max_y//2 + (2*variables.screen_max_y)//8))
     pygame.display.update()
 # Create TextInput-object
 textinput = pygame_textinput.TextInput()
-screen = pygame.display.set_mode((screen_max_x, screen_max_y))
+screen = pygame.display.set_mode((variables.screen_max_x, variables.screen_max_y))
 clock = pygame.time.Clock()
 
 selector = pygame.Surface((60,60), pygame.SRCALPHA)   # per-pixel alpha
 selector.fill((255,255,255,50))
 if not split_mode_on:
-    screen.blit(selector, (screen_max_x//2,screen_max_y//2-screen_max_y//70))
+    screen.blit(selector, (variables.screen_max_x//2,variables.screen_max_y//2-variables.screen_max_y//70))
 else:
-    screen.blit(selector, (screen_max_x//4,screen_max_y//2-screen_max_y//70))
-    screen.blit(selector, (3*screen_max_x//4,screen_max_y//2-screen_max_y//70))
+    screen.blit(selector, (variables.screen_max_x//4,variables.screen_max_y//2-variables.screen_max_y//70))
+    screen.blit(selector, (3*variables.screen_max_x//4,variables.screen_max_y//2-variables.screen_max_y//70))
 
 slow_flag=False
 gameplay=False
