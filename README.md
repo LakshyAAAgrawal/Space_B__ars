@@ -42,6 +42,8 @@ Immediate requirement-
   * 1. Protect/Shield - After the player uses this command, encountering a Spacebar will not kill, during the time the command is active.
   * 2. Wildcard - The player is given a choice to select any one of the characters from the keyboard which they wish to capture.
 * Suggestions for new Commands.
+* Method to determine a score for the game player.
+* Make a single directly playable executable file.
 
 Original Concept:-
 * Lakshya A Agrawal
