@@ -44,6 +44,7 @@ Immediate requirement-
 * Suggestions for new Commands.
 * Method to determine a score for the game player.
 * Make a single directly playable executable file.
+* Decide on a genre for the game.
 
 Original Concept:-
 * Lakshya A Agrawal
