@@ -6,7 +6,7 @@ import pygame
 def givechar(cap_char) :
 	
 	n=len(cap_char)
-	shit_char= ['!','@','#','$','%','^','&','*','(',')','<','>']
+	special_char= ['!','@','#','$','%','^','&','*','(',')','<','>']
 
 	intres=['a','d','e','o','w']
 
@@ -29,7 +29,7 @@ def givechar(cap_char) :
 		search=[]
 		search.extend(com_1*3)
 		search.extend(com_2)
-		search.extend(shit_char)
+		search.extend(special_char)
 		search.extend(intres)
 		search.extend(space)
 		search.extend(com_4)
@@ -45,7 +45,7 @@ def givechar(cap_char) :
 		search=[]
 		search.extend(com_1)
 		search.extend(com_2*2)
-		search.extend(shit_char)
+		search.extend(special_char)
 		search.extend(intres)
 		search.extend(com_4)
 		search.extend(space)
@@ -58,7 +58,7 @@ def givechar(cap_char) :
 
 		search=[]
 		search.extend(com_1)
-		search.extend(shit_char)
+		search.extend(special_char)
 		search.extend(com_2)
 		search.extend(intres)
 		search.extend(com_4)
