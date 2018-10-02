@@ -201,7 +201,6 @@ def show_menu():
                         fp.close()
                     except:
                         split_mode_on=False
-                    captured_char=['s','a','v','e','l','o','w','>','<']
                 gameplay=not gameplay
                 list_of_chars=[char_text.char_text(gc(captured_char))]
                 return()
