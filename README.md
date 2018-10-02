@@ -15,7 +15,11 @@ To install the pygame library using pip, execute
 ```
   pip3 install pygame
 ```
-to run, execute -
+Then, Download the zip file from the here( https://github.com/LakshyAAAgrawal/Space_B__ars/archive/master.zip ) and extract it. Then go to the extracted folder, by using 
+```
+cd Space_B__ars
+```
+then, to run, execute -
 ```
   python3 game.py
 ```
