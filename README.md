@@ -40,5 +40,3 @@ Also, you can contribute by giving suggestions and feature requests, filing bugs
 * Shrikant Garg
 * Rahul Kukreja
 * Nitish Gupta
-
-Created at IIIT-D.
