@@ -31,24 +31,13 @@ Windows users can just execute -
   python game.py
 ```
 # Contribute
-The project highly encourages any contributions, in any form - graphics, sounds, game commands, or code contributions. All suggestions, bug reports and idea contributions are welcome in the discussions. Please report as many bugs, and create issues.
-Immediate requirement-
-* Sounds
-  * 1. Background Music
-  * 2. In-game sounds
-* Game Logo
-* Documentation
-* Code maintenance and cleaning
-* Implementation of commands
-  * 1. Protect/Shield - After the player uses this command, encountering a Spacebar will not kill, during the time the command is active.
-  * 2. Wildcard - The player is given a choice to select any one of the characters from the keyboard which they wish to capture.
-* Suggestions for new Commands.
-* Method to determine a score for the game player.
-* Make a single directly playable executable file.
-* Decide on a genre for the game.
+The project highly encourages any contributions, in any form - graphics, sounds, game commands, or code contributions. All suggestions, bug reports and idea contributions are welcome in the discussions. Please report as many bugs, and create issues. Check issues for already pending feature requests and bugs.
+You could also help in Documenting the code, and performing code maintenance ( mainly, modularising the source code into multiple modules ).
+Also, you can contribute by giving suggestions and feature requests, filing bugs, etc. All by raising issues and labeling them.
 
-Original Concept:-
+# Original Concept:-
 * Lakshya A Agrawal
 * Shrikant Garg
 * Rahul Kukreja
 * Nitish Gupta
+Created at IIIT-D.
