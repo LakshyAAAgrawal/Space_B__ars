@@ -9,10 +9,14 @@ import pickle
 import cons_keyb
 import char_text
 import variables
+from background import Background
 pygame.init()
 
+
+
+
+
 #variable definitions
-screen_bgcolor=(0,0,0)
 keyb_scaling_y=2.4
 keyb_scaling_x=1.1
 slow_count=0
@@ -61,7 +65,14 @@ def update_marquee(cap_char, screen):
                 
 def game():
     global slow_count, slow_flag,dirn_change_counter, dirn_change, speed, gameplay, split_mode_on, split_mode_counter, save_counter, save_state, slow_start, slow_used, str_to_disp
+    #Uncomment below code to put image ingame apart from main menu
+    #BackGround = Background('./assets/images/background_image_ingame.jpg', [0,0])
+    #screen.fill([255, 255, 255])
+    #screen.blit(BackGround.image, BackGround.rect)
+
+    screen_bgcolor=(0,0,0)
     screen.fill(screen_bgcolor)
+
     events = pygame.event.get()
     displayText = displayfont.render(str_to_disp, True, (0, 255, 0), (0,0,0))
     displaytextrect = displayText.get_rect()
@@ -174,7 +185,10 @@ def game():
 def show_menu():
     global new_game, captured_char, gameplay, list_of_chars, split_mode_on, str_to_disp, game_start
     game_start=True
-    screen.fill(screen_bgcolor)
+    BackGround = Background('./assets/images/background_image.png', [0,0])
+    screen.fill([255, 255, 255])
+    screen.blit(BackGround.image, BackGround.rect)
+
     events = pygame.event.get()
     str_to_disp=''
     split_mode_on=False
