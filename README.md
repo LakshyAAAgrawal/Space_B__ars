@@ -35,7 +35,7 @@ The project highly encourages any contributions, in any form - graphics, sounds,
 You could also help in Documenting the code, and performing code maintenance ( mainly, modularising the source code into multiple modules ).
 Also, you can contribute by giving suggestions and feature requests, filing bugs, etc. All by raising issues and labeling them.
 
-# Original Concept:-
+# Original Concept
 * Lakshya A Agrawal
 * Shrikant Garg
 * Rahul Kukreja
