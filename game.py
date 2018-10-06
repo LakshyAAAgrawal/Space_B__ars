@@ -10,6 +10,8 @@ import cons_keyb
 import char_text
 import variables
 from background import Background
+import pygame, sys, time
+from pygame.locals import *
 pygame.init()
 
 
@@ -17,6 +19,9 @@ pygame.init()
 
 
 #variable definitions
+file = './assets/sounds/click_sound.mp3'
+pygame.mixer.music.load(file)
+                
 keyb_scaling_y=2.4
 keyb_scaling_x=1.1
 slow_count=0
@@ -91,6 +96,9 @@ def game():
     for event in events:
         if event.type == pygame.QUIT:
             exit()
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE :
+            pygame.mixer.music.play()
+
     # Feed it with events every frame
     ret_status=textinput.update(events, captured_char, list_of_chars, variables.screen_max_x, variables.screen_max_y, split_mode_on)
     if ret_status==True:
@@ -198,6 +206,8 @@ def show_menu():
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 new_game=not new_game
+                pygame.mixer.music.play()
+            
             elif event.key==pygame.K_RETURN:
                 if new_game:
                     captured_char=[]
