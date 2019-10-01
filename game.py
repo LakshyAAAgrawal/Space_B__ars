@@ -85,7 +85,7 @@ def game():
     displaytextrect.centerx = variables.screen_max_x//2
     displaytextrect.centery = variables.screen_max_y//10
     screen.blit(displayText, displaytextrect)
-    if "_" in captured_char:
+    if ("_" in captured_char and (not shield_flag)):
         gameplay=not gameplay
         return()
     for i in ['!','@','#','$','%','^','&','(',')']:
