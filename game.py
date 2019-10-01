@@ -35,6 +35,7 @@ dirn_change_counter=0
 split_mode_on=False
 split_mode_counter=0
 slow_used=False
+shield_used = False
 slow_start=0
 str_to_disp=''
 game_start=True
@@ -69,7 +70,7 @@ def update_marquee(cap_char, screen):
                 list_of_chars.append(char_text.char_text(gc(cap_char)))
                 
 def game():
-    global slow_count, slow_flag,dirn_change_counter, dirn_change, speed, gameplay, split_mode_on, split_mode_counter, save_counter, save_state, slow_start, slow_used, str_to_disp
+    global slow_count, slow_flag,dirn_change_counter, dirn_change, speed, gameplay, split_mode_on, split_mode_counter, save_counter, save_state, slow_start, slow_used, str_to_disp, shield_start, shield_used, shield_flag, shield_count
     #Uncomment below code to put image ingame apart from main menu
     #BackGround = Background('./assets/images/background_image_ingame.jpg', [0,0])
     #screen.fill([255, 255, 255])
@@ -131,6 +132,16 @@ def game():
             else:
                 print("Can't save")
                 str_to_disp="Game Cannot be saved"
+        elif (textinput.get_text() == "shield"):
+        	if not shield_used:
+        		if not shield_flag:
+        			print("shield")
+        			shield_flag = True
+        			shield_count = pygame.time.get_ticks()
+        			shield_start = shield_count
+        			shield_used = True
+        			str_to_disp = "You are Protected from Space_B__ars"
+
         textinput.clear_text()
         
     if pygame.time.get_ticks()<=4000:
@@ -154,12 +165,24 @@ def game():
             slow_flag=False
             slow_count=0
             speed=30
+    if shield_flag:
+    	if abs(pygame.time.get_ticks()-shield_count)>=30000:
+    		print("protection over")
+    		str_to_disp = "Protection against Space_B__ars Over"
+    		shield_flag = False
+    		shield_count = 0
     if slow_used:
         if abs(pygame.time.get_ticks()-slow_start)>=60000:
             slow_used=not slow_used
             slow_start=0
             print("Allowed to use slow")
             str_to_disp="Allowed to use slow"
+    if shield_used:
+    	if abs(pygame.time.get_ticks()-shield_start)>=90000:
+    		shield_used = not shield_used
+    		shield_start = 0
+    		print("Allowed to used shield")
+    		str_to_disp = "Allowed to use shield"
     if split_mode_on:
         if abs(pygame.time.get_ticks()-split_mode_counter)>=30000:
             split_mode_on=False
@@ -267,6 +290,7 @@ else:
     screen.blit(selector, (3*variables.screen_max_x//4,variables.screen_max_y//2-variables.screen_max_y//70))
 
 slow_flag=False
+shield_flag = False
 gameplay=False
 while True:
     if gameplay:
