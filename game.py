@@ -166,7 +166,7 @@ def game():
             slow_count=0
             speed=30
     if shield_flag:
-    	if abs(pygame.time.get_ticks()-shield_count)>=30000:
+    	if abs(pygame.time.get_ticks()-shield_count)>=10000:
     		print("protection over")
     		str_to_disp = "Protection against Space_B__ars Over"
     		shield_flag = False
