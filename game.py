@@ -133,15 +133,18 @@ def game():
                 print("Can't save")
                 str_to_disp="Game Cannot be saved"
         elif (textinput.get_text() == "shield"):
-        	if not shield_used:
-        		if not shield_flag:
-        			print("shield")
-        			shield_flag = True
-        			shield_count = pygame.time.get_ticks()
-        			shield_start = shield_count
-        			shield_used = True
-        			str_to_disp = "You are Protected from Space_B__ars"
-
+            if not shield_used:
+                if not shield_flag:
+                    print("shield")
+                    shield_flag = True
+                    shield_count = pygame.time.get_ticks()
+                    shield_start = shield_count
+                    shield_used = True
+                    str_to_disp = "You are Protected from Space_B__ars"
+            elif shield_used:
+                print("Can't use shield")
+                str_to_disp="Can't shield right now"
+        
         textinput.clear_text()
         
     if pygame.time.get_ticks()<=4000:
