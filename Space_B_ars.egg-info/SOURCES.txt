@@ -1,0 +1,15 @@
+README.md
+setup.py
+Space_B__ars/__init__.py
+Space_B__ars/background.py
+Space_B__ars/char_text.py
+Space_B__ars/cons_keyb.py
+Space_B__ars/game.py
+Space_B__ars/give_char.py
+Space_B__ars/input_keyb.py
+Space_B__ars/variables.py
+Space_B_ars.egg-info/PKG-INFO
+Space_B_ars.egg-info/SOURCES.txt
+Space_B_ars.egg-info/dependency_links.txt
+Space_B_ars.egg-info/requires.txt
+Space_B_ars.egg-info/top_level.txt
