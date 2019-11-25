@@ -35,6 +35,10 @@ The project highly encourages any contributions, in any form - graphics, sounds,
 You could also help in Documenting the code, and performing code maintenance ( mainly, modularising the source code into multiple modules ).
 Also, you can contribute by giving suggestions and feature requests, filing bugs, etc. All by raising issues and labeling them.
 
+## Developers Channels
+[Matrix Room](https://matrix.to/#/#space-bars-dev:matrix.org)
+[Bridged Telegram Channel](https://t.me/Space_B_ars)
+
 # Original Concept
 * Lakshya A Agrawal
 * Shrikant Garg
