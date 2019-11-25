@@ -37,6 +37,7 @@ Also, you can contribute by giving suggestions and feature requests, filing bugs
 
 ## Developers Channels
 [Matrix Room](https://matrix.to/#/#space-bars-dev:matrix.org)
+
 [Bridged Telegram Channel](https://t.me/Space_B_ars)
 
 # Original Concept
