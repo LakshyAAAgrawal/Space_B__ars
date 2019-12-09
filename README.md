@@ -35,6 +35,10 @@ The project highly encourages any contributions, in any form - graphics, sounds,
 You could also help in Documenting the code, and performing code maintenance ( mainly, modularising the source code into multiple modules ).
 Also, you can contribute by giving suggestions and feature requests, filing bugs, etc. All by raising issues and labeling them.
 
+## Development
+In order to ensure that multiple contributers do not end up working on the same issue, leave a comment on the issue asking to be assigned before starting work on it. Work on the issue after being assigned to it.
+After making the necessary changes, create a pull request referencing the issue number.
+
 ## Developers Channels
 [Matrix Room](https://matrix.to/#/#space-bars-dev:matrix.org)
 
