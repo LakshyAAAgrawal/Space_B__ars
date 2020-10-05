@@ -11,8 +11,8 @@ Some of the commands that have been thought of are - protect, reverse, slow, sav
 The player will not be knowing which all commands exist in the game, but rather be expected to try out the different words that can be formed with the available keys, and see what happens and works.
 
 ## Game Play
-<img src="./assets/images/Home_Page.png">
-<img src="./assets/images/Game_Play.png">
+![Home](/assets/images/Home_Page.png "Home Page")
+![Game](/assets/images/Game_Play.png "Game Play")
 
 # Installation instructions
 The game is written in python3 and therefore requires python3 to be installed along with the pygame library. It also uses the pickle library - which is inbuilt.
