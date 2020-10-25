@@ -36,6 +36,8 @@ split_mode_on=False
 split_mode_counter=0
 slow_used=False
 shield_used = False
+wildcard_used = False
+entering_wildcard = False
 slow_start=0
 str_to_disp=''
 game_start=True
@@ -70,7 +72,7 @@ def update_marquee(cap_char, screen):
                 list_of_chars.append(char_text.char_text(gc(cap_char)))
                 
 def game():
-    global slow_count, slow_flag,dirn_change_counter, dirn_change, speed, gameplay, split_mode_on, split_mode_counter, save_counter, save_state, slow_start, slow_used, str_to_disp, shield_start, shield_used, shield_flag, shield_count
+    global slow_count, slow_flag,dirn_change_counter, dirn_change, speed, gameplay, split_mode_on, split_mode_counter, save_counter, save_state, slow_start, slow_used, str_to_disp, shield_start, shield_used, shield_flag, shield_count, wildcard_used,wildcard_count,wildcard_pending
     #Uncomment below code to put image ingame apart from main menu
     #BackGround = Background('./assets/images/background_image_ingame.jpg', [0,0])
     #screen.fill([255, 255, 255])
@@ -144,6 +146,30 @@ def game():
             elif shield_used:
                 print("Can't use shield")
                 str_to_disp="Can't shield right now"
+        elif (textinput.get_text() == "*"):
+            if not wildcard_used:
+                print("wildcard")
+                wildcard_pending = True
+                str_to_disp = "Please enter the key that you would like captured."
+                #temp = list_of_chars
+                #characters = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','e','g','h','j','k','l','z','x','c','v','b','n','m']
+                #for i in characters:
+                    #list_of_chars.append(char_text.char_text(gc(i)))
+
+                #disable locked keys while wildcard_pending == True. ********************************************
+
+            elif wildcard_used:
+                print("Can't use wildcard")
+                str_to_disp="Can't wildcard right now"
+        elif (wildcard_pending):
+            wildinput = textinput.get_text()
+            print("wildcard: " + wildinput)
+            str_to_disp = "Captured: " + wildinput
+            wildcard_pending = False
+            wildcard_count = pygame.time.get_ticks()
+            wildcard_used = True
+            captured_char.append(wildinput)
+            #renable locked keys
         
         textinput.clear_text()
         
@@ -174,6 +200,12 @@ def game():
     		str_to_disp = "Protection against Space_B__ars Over"
     		shield_flag = False
     		shield_count = 0
+    if wildcard_used:
+    	if abs(pygame.time.get_ticks()-wildcard_count)>=10000:
+    		print("wildcard over")
+    		str_to_disp = "You may use wildcard again."
+    		wildcard_used = False
+    		wildcard_count = 0
     if slow_used:
         if abs(pygame.time.get_ticks()-slow_start)>=60000:
             slow_used=not slow_used
